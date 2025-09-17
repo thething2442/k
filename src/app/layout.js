@@ -1,12 +1,8 @@
 import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
 import { auth } from "./api/auth/[...nextauth]/route";
 import { SessionProvider } from "next-auth/react";
 import { CartProvider } from "@/context/CartContext";
-
-const geistSans = GeistSans;
-const geistMono = GeistMono;
 
 export const metadata = {
   title: "Hub Market",
@@ -16,10 +12,8 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const session = await auth();
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={GeistSans.className}>
+      <body>
         <SessionProvider session={session}>
           <CartProvider>
             {children}
