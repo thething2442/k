@@ -1,4 +1,5 @@
 import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
 import { auth } from "./api/auth/[...nextauth]/route";
 import { SessionProvider } from "next-auth/react";
@@ -12,8 +13,8 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const session = await auth();
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body>
+    <html lang="en">
+      <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <SessionProvider session={session}>
           <CartProvider>
             {children}
